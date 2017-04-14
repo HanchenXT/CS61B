@@ -58,7 +58,7 @@ public class TestPlanetConstructor {
 
         checkEquals(xxPos, p.xxPos, "x");
         checkEquals(yyPos, p.yyPos, "y");
-        checkEquals(xxVel ,p.xxVel, "xVelocity");
+        checkEquals(xxVel, p.xxVel, "xVelocity");
         checkEquals(yyVel, p.yyVel, "yVelocity");
         checkEquals(mass, p.mass, "mass");
         checkStringEquals(imgFileName, p.imgFileName, "path to image");
