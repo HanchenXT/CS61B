@@ -1,4 +1,5 @@
-import java.lang.Math; 
+import java.lang.Math;
+import edu.princeton.cs.algs4.StdDraw;
 public class Planet {
     // declare instance variables
     public double xxPos; // Its current x position
@@ -77,5 +78,19 @@ public class Planet {
         return sum;
     }
     
-    
+    /* Update method determines how much the forces exerted on the planet will cause
+    the planet to accelerate, and the resulting change in the planet's velocity 
+    and position in a small period of time. */
+    public void update (double dt, double fX, double fY) {
+        // update the current velocity
+        this.xxVel += dt*fX/this.mass;
+        this.yyVel += dt*fY/this.mass;
+        
+        // update the current position
+        this.xxPos += dt*this.xxVel;
+        this.yyPos += dt*this.yyVel;
+    }
+    public void draw () {
+        StdDraw.picture(xxPos, yyPos, imgFileName);
+    }
 }
