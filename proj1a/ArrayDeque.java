@@ -1,6 +1,6 @@
 public class ArrayDeque<Item> {
     public int intSize = 8;
-    public int size = 0;
+    public int size;
     public int nfirst = intSize/2;
     public int nlast = nfirst + 1;
     public Item[] s;
@@ -8,7 +8,12 @@ public class ArrayDeque<Item> {
     // Constructor
     public ArrayDeque() {
         s = (Item[]) new Object[intSize];
+        size = 0;
     }
+    
+    // Resize an array
+    
+    
     // Adds an item to the front of the Deque
     public void addFirst(Item item) {
         s[nfirst] = item;

@@ -80,8 +80,16 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList ptr = A;
+        while (A.rest != null) {
+            A = A.rest;
+        }
+        while (B != null) {
+            A.rest = B;
+            B = B.rest;
+            A = A.rest;
+        }
+        return ptr;
     }
 
     /**
@@ -89,8 +97,20 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList res = new IntList(A.first, null);
+        IntList ptr = res;
+        A = A.rest;
+        while (A != null) {
+            ptr.rest = new IntList(A.first, null);
+            ptr = ptr.rest;
+            A = A.rest;
+        }
+        while (B != null) {
+            ptr.rest = new IntList(B.first, null);
+            ptr = ptr.rest;
+            B = B.rest;
+        }
+        return res;
     }
 
 
@@ -212,4 +232,5 @@ public class IntList {
         return out.toString();
     }
 }
+
 
