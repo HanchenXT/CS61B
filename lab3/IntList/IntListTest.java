@@ -68,10 +68,10 @@ public class IntListTest {
     
     @Test
     public void testreverse() {
-        IntList A = IntList.list(1, 2, 3);
-        IntList exp = IntList.list(3, 2, 1);
+        IntList A = IntList.list(1, 2, 3, 4, 5, 6);
+        IntList exp = IntList.list(6, 5, 4, 3, 2, 1);
         assertEquals(exp, IntList.reverse(A));
-        assertEquals(IntList.list(3, 2, 1), A);
+        assertEquals(IntList.list(6, 5, 4, 3, 2, 1), A);
     }
 
     /** If you're running this from the command line, you'll need

@@ -36,7 +36,6 @@ public class IntList {
      * Returns a list equal to L with all elements squared. Destructive.
      */
     public static void dSquareList(IntList L) {
-
         while (L != null) {
             L.first = L.first * L.first;
             L = L.rest;
@@ -109,11 +108,38 @@ public class IntList {
             ptr.rest = new IntList(B.first, null);
             ptr = ptr.rest;
             B = B.rest;
-            //
         }
         return res;
     }
+    
+    /**
+     * Returns a list consisting of the reverse order of elements of L 
+     * May modify items of A. Do not use 'new'.
+     */
 
+    public static IntList reverse(IntList L) {
+        int ct = 0;
+        int temp = 0;
+        IntList org = L;
+        IntList ptr = L;
+        while (L.rest != null) {
+            L = L.rest;
+            ct++;
+        }
+
+        for (int i = 0; i < ct/2+1; i++) {
+            L = org;
+            for (int k = 0; k < ct-i; k++) {
+                L = L.rest;
+            }
+            temp = ptr.first;
+            ptr.first = L.first;
+            L.first = temp;
+            ptr = ptr.rest;
+        }
+        
+        return org;
+    }
 
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
