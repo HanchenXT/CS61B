@@ -5,12 +5,30 @@ public class TestArrayDeque1B {
     
     @Test
     public void testaddFirst() {
+        
+        int num1 = StdRandom.uniform(100);
+        int num2 = StdRandom.uniform(100);
+        
+        OperationSequence fs = new OperationSequence();
+        DequeOperation dequeOp1 = new DequeOperation("addFirst", num1);
+        DequeOperation dequeOp2 = new DequeOperation("addLast", num2);
+        DequeOperation dequeOp3 = new DequeOperation("removeFirst");
+        DequeOperation dequeOp4 = new DequeOperation("removeLast");
+
+
+        fs.addOperation(dequeOp1);
+        fs.addOperation(dequeOp2);
+        fs.addOperation(dequeOp3);
+        fs.addOperation(dequeOp4);
+
+        System.out.println(fs.toString());
+
         StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
-        int num = StdRandom.uniform(100);
-        stu.addFirst(num);
-        sol.addFirst(num);
-        assertEquals(sol, stu);
+
+        stu.addFirst(num1);
+        sol.addFirst(num1);
+        assertEquals(fs.toString(), sol, stu);
     }
     
     @Test
