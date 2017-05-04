@@ -1,7 +1,7 @@
 
 public class LinkedListDeque<Item> {
     private int size = 0; // declare size of linked list
-    private Node<Item> head, tail;
+    private Node<Item> sentinel;
     
     // Nested Node classes creating a node of a linked list 
     private static class Node<Item> {
@@ -12,12 +12,9 @@ public class LinkedListDeque<Item> {
     // Constructor
     public LinkedListDeque() {
         // Set up the circular sentinel
-        head = new Node<Item>();
-        tail = new Node<Item>();
-        head.next = tail;
-        head.prev = tail;
-        tail.next = head;
-        tail.prev = head;
+        sentinel = new Node<Item>();
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
     }
     // Adds an item to the front of the Deque
     public void addFirst(Item item) {
@@ -27,15 +24,15 @@ public class LinkedListDeque<Item> {
         Node<Item> current = new Node<Item>();
         current.item = item;
         if (isEmpty()) {
-            head.next = current;
-            current.prev = head;
-            current.next = tail;
+            sentinel.next = current;
+            current.prev = sentinel;
+            current.next = sentinel;
         } else {
-            Node<Item> first = head.next;
+            Node<Item> first = sentinel.next;
             first.prev = current;
-            head.next = current;
+            sentinel.next = current;
             current.next = first;
-            current.prev = head;
+            current.prev = sentinel;
         }
         size++;
     }
@@ -48,15 +45,15 @@ public class LinkedListDeque<Item> {
         Node<Item> current = new Node<Item>();
         current.item = item;
         if (isEmpty()) {
-            tail.prev = current;
-            current.next = tail;
-            current.prev = head;
+            sentinel.prev = current;
+            current.next = sentinel;
+            current.prev = sentinel;
         } else {
-            Node<Item> last = tail.prev;
+            Node<Item> last = sentinel.prev;
             last.next = current;
-            tail.prev = current;
-            current.next = tail;
-            current.prev = last;
+            sentinel.prev = current;
+            current.next = sentinel;
+            current.prev = sentinel;
         }
         size++;
     }
@@ -74,8 +71,8 @@ public class LinkedListDeque<Item> {
     // Prints the items in the Deque from first to last, separated by a space
     public void printDeque() {
         if (isEmpty()) {
-            Node<Item> p = head.next;
-            while (p.next != head) {
+            Node<Item> p = sentinel.next;
+            while (p.next != sentinel) {
                 System.out.println(p.item);
                 p = p.next;
             }
@@ -91,10 +88,10 @@ public class LinkedListDeque<Item> {
         if (size == 0) {
             return null;
         }
-        Node<Item> current = head.next;
+        Node<Item> current = sentinel.next;
         Node<Item> first = current.next;
-        head.next = first;
-        first.prev = head;
+        sentinel.next = first;
+        first.prev = sentinel;
         size--;
         return current.item;
     }
@@ -107,10 +104,10 @@ public class LinkedListDeque<Item> {
         if (size == 0) {
             return null;
         }
-        Node<Item> current = tail.prev;
+        Node<Item> current = sentinel.prev;
         Node<Item> last = current.prev;
-        tail.prev = last;
-        last.next = tail;
+        sentinel.prev = last;
+        last.next = sentinel;
         return current.item;
     }
     
@@ -120,7 +117,7 @@ public class LinkedListDeque<Item> {
      * returns null. Must not alter the deque!
      */
     public Item get(int index) {
-        Node<Item> current = head.next;
+        Node<Item> current = sentinel.next;
         while (index != 0) {
             current = current.next;
             index--;
@@ -131,9 +128,9 @@ public class LinkedListDeque<Item> {
     // Same as get method, but uses recursion
     public Item getRecursive(int index) {
         if (index == 0) {
-            return head.next.item;
+            return sentinel.next.item;
         }
-        Node<Item> current = head.next;
+        Node<Item> current = sentinel.next;
         return gRhelper(index, current);
     }
     
