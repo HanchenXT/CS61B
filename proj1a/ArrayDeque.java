@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class ArrayDeque<Item> {
     public int intSize = 8;
     public int size;
@@ -12,10 +14,23 @@ public class ArrayDeque<Item> {
     }
     
     // Resize an array
+    public void resize(int max) {
+        Item[] t = (Item[]) new Object[max];
+        for (int i = 0; i < size; i++) {
+            t[i] = s[i];
+        }
+        s = t;
+    }
     
     
     // Adds an item to the front of the Deque
     public void addFirst(Item item) {
+        if (item == null) {
+            throw new NullPointerException();
+        }
+        if (size == s.length) {
+            resize(2*s.length);
+        }
         s[nfirst] = item;
         nfirst--;
         size++;
@@ -23,6 +38,12 @@ public class ArrayDeque<Item> {
     
     // Adds an item to the back of Deque
     public void addLast(Item item) {
+        if (item == null) {
+            throw new NullPointerException();
+        }
+        if (size == s.length) {
+            resize(2*s.length);
+        }
         s[nlast] = item;
         nlast++;
         size++;
@@ -51,9 +72,15 @@ public class ArrayDeque<Item> {
      */
     
     public Item removeFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         Item r = s[nfirst+1];
         s[nfirst+1] = null;
         size--;
+        if (size > 0 && size == s.length/4) {
+            resize(s.length/2);
+        }
         return r;
     }
     /* 
@@ -62,9 +89,15 @@ public class ArrayDeque<Item> {
      */
     
     public Item removelast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         Item r = s[nlast-1];
         s[nlast-1] = null;
         size--;
+        if (size > 0 && size == s.length/4) {
+            resize(s.length/2);
+        }
         return r;
     }
     
@@ -75,12 +108,6 @@ public class ArrayDeque<Item> {
      */
     public Item get(int index) {
         return s[index];
-    }
-    
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
     }
 
 }
