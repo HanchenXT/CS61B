@@ -73,6 +73,7 @@ public class IntListTest {
         assertEquals(IntList.list(6, 5, 4, 3, 2, 1), A);
     }
 
+    
     /** If you're running this from the command line, you'll need
       * to add a main method. See ArithmeticTest.java for an
       * example. */
