@@ -9,9 +9,7 @@ public class TestArrayDeque1B {
         int add = StdRandom.uniform(50, 100);
         int remove = StdRandom.uniform(49);
         OperationSequence fs = new OperationSequence();
-        //StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
-        //ArrayDeque<Integer> stu = new ArrayDeque<>();
-        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
@@ -36,9 +34,7 @@ public class TestArrayDeque1B {
         
         int add = 100;
         OperationSequence fs = new OperationSequence();
-        //StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
-        //ArrayDeque<Integer> stu = new ArrayDeque<>();
-        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
@@ -56,9 +52,7 @@ public class TestArrayDeque1B {
         
         int add = 100;
         OperationSequence fs = new OperationSequence();
-        //StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
-        //ArrayDeque<Integer> stu = new ArrayDeque<>();
-        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
@@ -77,9 +71,7 @@ public class TestArrayDeque1B {
         int add = 100;
         int remove = 100;
         OperationSequence fs = new OperationSequence();
-        //StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
-        //ArrayDeque<Integer> stu = new ArrayDeque<>();
-        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
@@ -102,9 +94,7 @@ public class TestArrayDeque1B {
         int add = 100;
         int remove = 100;
         OperationSequence fs = new OperationSequence();
-        //StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
-        //ArrayDeque<Integer> stu = new ArrayDeque<>();
-        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        StudentArrayDeque<Integer> stu = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);

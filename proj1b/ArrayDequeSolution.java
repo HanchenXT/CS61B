@@ -13,7 +13,7 @@ public class ArrayDequeSolution<Item> extends LinkedList<Item> implements Deque<
     }
 
     @Override
-    public Item get(int i) {
+    public Item getRecursive(int i) {
         return get(i);
     }
 
