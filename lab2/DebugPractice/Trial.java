@@ -1,5 +1,6 @@
 public abstract class Trial {
 
+    
     public static void lava(Traveler t) {
         if (t.isStopped()) {
             t.hop();
