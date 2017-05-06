@@ -54,8 +54,8 @@ public class DequeTest {
         
         int add = 100;
         OperationSequence fs = new OperationSequence();
-        ArrayDeque<Integer> stu = new ArrayDeque<>();
-        //LinkedListDeque<Integer> stu = new LinkedListDeque<>();
+        //ArrayDeque<Integer> stu = new ArrayDeque<>();
+        LinkedListDeque<Integer> stu = new LinkedListDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
@@ -64,8 +64,8 @@ public class DequeTest {
             DequeOperation dequeOp1 = new DequeOperation("addLast", num);
             fs.addOperation(dequeOp1);
             assertEquals(fs.toString(), sol.get(sol.size()-1),stu.getRecursive(stu.size()-1));
+            //assertEquals(fs.toString(), sol.size(), stu.size());
         }
-        
     }
     
     @Test
@@ -79,8 +79,8 @@ public class DequeTest {
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
-            stu.addFirst(num);
-            sol.addFirst(num);
+            stu.addLast(num);
+            sol.addLast(num);
         }
         for (int j = 0; j < remove; j++) {
             int st = stu.removeFirst();
@@ -96,15 +96,15 @@ public class DequeTest {
     public void testremoveLast() {
         
         int add = 100;
-        int remove = 100;
+        int remove = 99;
         OperationSequence fs = new OperationSequence();
         //ArrayDeque<Integer> stu = new ArrayDeque<>();
         LinkedListDeque<Integer> stu = new LinkedListDeque<>();
         ArrayDequeSolution<Integer> sol = new ArrayDequeSolution<Integer>();
         for (int i = 0; i < add; i++) {
             int num = StdRandom.uniform(100);
-            stu.addLast(num);
-            sol.addLast(num);
+            stu.addFirst(num);
+            sol.addFirst(num);
         }
         for (int j = 0; j < remove; j++) {
             int st = stu.removeLast();

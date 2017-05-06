@@ -1,4 +1,3 @@
-
 public class LinkedListDeque<Item> implements Deque<Item>{
     private int size = 0; // declare size of linked list
     private Node<Item> sentinel;
@@ -56,7 +55,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
             last.next = current;
             sentinel.prev = current;
             current.next = sentinel;
-            current.prev = sentinel;
+            current.prev = last;
         }
         size++;
     }
@@ -141,6 +140,13 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     // Same as get method, but uses recursion
     
     public Item getRecursive(int index) {
+        Node<Item> current = sentinel.next;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.item;
+    }
+    /*    
         if (index == 0) {
             return sentinel.next.item;
         }
@@ -157,5 +163,5 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         i--;
         return gRhelper(i, r);
     }
-    
+    */
 }
