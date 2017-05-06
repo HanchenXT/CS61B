@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class ArrayDeque<Item> {
+public class ArrayDeque<Item> implements Deque<Item>{
     public int intSize = 8;
     public int size;
     public int nfirst = intSize/2;
@@ -14,7 +14,7 @@ public class ArrayDeque<Item> {
     }
     
     // Resize an array
-    public void resize(int max) {
+    private void resize(int max) {
         Item[] t = (Item[]) new Object[max];
         for (int i = 0; i < size; i++) {
             t[i] = s[i];
@@ -24,6 +24,7 @@ public class ArrayDeque<Item> {
     
     
     // Adds an item to the front of the Deque
+    @Override
     public void addFirst(Item item) {
         if (item == null) {
             throw new NullPointerException();
@@ -37,6 +38,7 @@ public class ArrayDeque<Item> {
     }
     
     // Adds an item to the back of Deque
+    @Override
     public void addLast(Item item) {
         if (item == null) {
             throw new NullPointerException();
@@ -50,16 +52,19 @@ public class ArrayDeque<Item> {
     }
     
     // Returns true if deque is empty, false otherwise
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
     
     // Returns the numbers of items in the Deque
+    @Override
     public int size() {
         return size;
     }
     
     // Prints the items in the Deque from first to last, separated by a space
+    @Override
     public void printDeque() {
         for (int i = 0; i < size; i++) {
             System.out.println(s[i]);
@@ -70,7 +75,7 @@ public class ArrayDeque<Item> {
      * Removes and returns the item at the front of the Deque. 
      * if no such item exists, return null
      */
-    
+    @Override
     public Item removeFirst() {
         if (isEmpty()) {
             throw new NoSuchElementException();
@@ -87,7 +92,11 @@ public class ArrayDeque<Item> {
      * Removes and returns the item at the back of the Deque. 
      * if no such item exists, return null
      */
+<<<<<<< HEAD
     
+=======
+    @Override
+>>>>>>> refs/remotes/origin/master
     public Item removeLast() {
         if (isEmpty()) {
             throw new NoSuchElementException();
@@ -106,6 +115,7 @@ public class ArrayDeque<Item> {
      * 1 is the next item, and so forth. If no such item exists,
      * returns null. Must not alter the deque!
      */
+    @Override
     public Item get(int index) {
         return s[index];
     }

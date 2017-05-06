@@ -1,5 +1,5 @@
 
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<Item> implements Deque<Item>{
     private int size = 0; // declare size of linked list
     private Node<Item> sentinel;
     
@@ -17,6 +17,7 @@ public class LinkedListDeque<Item> {
         sentinel.prev = sentinel;
     }
     // Adds an item to the front of the Deque
+    @Override
     public void addFirst(Item item) {
         if (item == null) {
             throw new NullPointerException();
@@ -37,7 +38,9 @@ public class LinkedListDeque<Item> {
         size++;
     }
     
+    
     // Adds an item to the back of Deque
+    @Override
     public void addLast(Item item) {
         if (item == null) {
             throw new NullPointerException();
@@ -58,17 +61,21 @@ public class LinkedListDeque<Item> {
         size++;
     }
     
+    
     // Returns true if deque is empty, false otherwise
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
     
     // Returns the numbers of items in the deque
+    @Override
     public int size() {
         return size;
     }
     
     // Prints the items in the Deque from first to last, separated by a space
+    @Override
     public void printDeque() {
         if (isEmpty()) {
             Node<Item> p = sentinel.next;
@@ -83,7 +90,7 @@ public class LinkedListDeque<Item> {
      * Removes and returns the item at the front of the Deque. 
      * if no such item exists, return null
      */
-    
+    @Override
     public Item removeFirst() {
         if (size == 0) {
             return null;
@@ -95,11 +102,16 @@ public class LinkedListDeque<Item> {
         size--;
         return current.item;
     }
+    
     /* 
      * Removes and returns the item at the back of the Deque. 
      * if no such item exists, return null
      */
+<<<<<<< HEAD
     
+=======
+    @Override
+>>>>>>> refs/remotes/origin/master
     public Item removeLast() {
         if (size == 0) {
             return null;
@@ -116,6 +128,7 @@ public class LinkedListDeque<Item> {
      * 1 is the next item, and so forth. If no such item exists,
      * returns null. Must not alter the deque!
      */
+    @Override
     public Item get(int index) {
         Node<Item> current = sentinel.next;
         while (index != 0) {
@@ -126,6 +139,7 @@ public class LinkedListDeque<Item> {
     }
     
     // Same as get method, but uses recursion
+    /*
     public Item getRecursive(int index) {
         if (index == 0) {
             return sentinel.next.item;
@@ -133,6 +147,7 @@ public class LinkedListDeque<Item> {
         Node<Item> current = sentinel.next;
         return gRhelper(index, current);
     }
+    
     
     private Item gRhelper(int i, Node<Item> r) {
         if (i == 0) {
@@ -142,9 +157,5 @@ public class LinkedListDeque<Item> {
         i--;
         return gRhelper(i, r);
     }
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-    }
-
+    */
 }
