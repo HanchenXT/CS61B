@@ -88,7 +88,7 @@ public class ArrayDeque<Item> {
      * if no such item exists, return null
      */
     
-    public Item removelast() {
+    public Item removeLast() {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }

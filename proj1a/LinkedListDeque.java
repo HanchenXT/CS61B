@@ -100,7 +100,7 @@ public class LinkedListDeque<Item> {
      * if no such item exists, return null
      */
     
-    public Item removelast() {
+    public Item removeLast() {
         if (size == 0) {
             return null;
         }
