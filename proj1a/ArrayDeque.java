@@ -92,11 +92,9 @@ public class ArrayDeque<Item> implements Deque<Item>{
      * Removes and returns the item at the back of the Deque. 
      * if no such item exists, return null
      */
-<<<<<<< HEAD
-    
-=======
+
     @Override
->>>>>>> refs/remotes/origin/master
+
     public Item removeLast() {
         if (isEmpty()) {
             throw new NoSuchElementException();
@@ -116,7 +114,7 @@ public class ArrayDeque<Item> implements Deque<Item>{
      * returns null. Must not alter the deque!
      */
     @Override
-    public Item get(int index) {
+    public Item getRecursive(int index) {
         return s[index];
     }
 

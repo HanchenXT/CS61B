@@ -107,11 +107,8 @@ public class LinkedListDeque<Item> implements Deque<Item>{
      * Removes and returns the item at the back of the Deque. 
      * if no such item exists, return null
      */
-<<<<<<< HEAD
-    
-=======
+
     @Override
->>>>>>> refs/remotes/origin/master
     public Item removeLast() {
         if (size == 0) {
             return null;
@@ -128,7 +125,10 @@ public class LinkedListDeque<Item> implements Deque<Item>{
      * 1 is the next item, and so forth. If no such item exists,
      * returns null. Must not alter the deque!
      */
+    
+    /*
     @Override
+    
     public Item get(int index) {
         Node<Item> current = sentinel.next;
         while (index != 0) {
@@ -137,9 +137,9 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         }
         return current.item;
     }
-    
+    */
     // Same as get method, but uses recursion
-    /*
+    
     public Item getRecursive(int index) {
         if (index == 0) {
             return sentinel.next.item;
@@ -157,5 +157,5 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         i--;
         return gRhelper(i, r);
     }
-    */
+    
 }
