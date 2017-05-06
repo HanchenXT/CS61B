@@ -25,6 +25,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         current.item = item;
         if (isEmpty()) {
             sentinel.next = current;
+            sentinel.prev = current;
             current.prev = sentinel;
             current.next = sentinel;
         } else {
@@ -48,6 +49,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         current.item = item;
         if (isEmpty()) {
             sentinel.prev = current;
+            sentinel.next = current;
             current.next = sentinel;
             current.prev = sentinel;
         } else {
@@ -125,10 +127,9 @@ public class LinkedListDeque<Item> implements Deque<Item>{
      * returns null. Must not alter the deque!
      */
     
-    /*
+    /* Uncomment to use loop to get element in the deque
     @Override
-    
-    public Item get(int index) {
+    public Item getRecursive(int index) {
         Node<Item> current = sentinel.next;
         while (index != 0) {
             current = current.next;
@@ -137,23 +138,17 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         return current.item;
     }
     */
-    // Same as get method, but uses recursion
     
+    // Same as get method, but uses recursion
+    @Override
     public Item getRecursive(int index) {
-        Node<Item> current = sentinel.next;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        return current.item;
-    }
-    /*    
+
         if (index == 0) {
             return sentinel.next.item;
         }
         Node<Item> current = sentinel.next;
         return gRhelper(index, current);
     }
-    
     
     private Item gRhelper(int i, Node<Item> r) {
         if (i == 0) {
@@ -163,5 +158,5 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         i--;
         return gRhelper(i, r);
     }
-    */
+
 }
