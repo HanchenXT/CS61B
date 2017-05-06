@@ -121,7 +121,7 @@ public class TestArrayDeque1B {
         
     }
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        
         jh61b.junit.TestRunner.runTests("all", TestArrayDeque1B.class);
 
     }
