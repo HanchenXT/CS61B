@@ -1,15 +1,15 @@
 import java.util.NoSuchElementException;
 
 public class ArrayDeque<Item> implements Deque<Item>{
-    public int intSize = 8;
-    public int size;
-    public int nfirst = intSize/2;
-    public int nlast = nfirst + 1;
-    public Item[] s;
+    
+    private int size; // size of deque
+    //private int fptr = 0; // pointer points to the first element in deque  
+    //private int lptr = 0; // pointer points to the last element in deque
+    private Item[] s; // deque array
     
     // Constructor
     public ArrayDeque() {
-        s = (Item[]) new Object[intSize];
+        s = (Item[]) new Object[1];
         size = 0;
     }
     
@@ -22,19 +22,38 @@ public class ArrayDeque<Item> implements Deque<Item>{
         s = t;
     }
     
-    
+    // Move array forward by one
+    private void arraymoveforward() {
+        Item [] af = (Item[]) new Object[s.length];
+        for (int k = 0; k < size; k++) {
+            af[k+1] = s[k];
+        }
+        s = af;
+    }    
+    // Move array backward by one
+    private void arraymovebackward() {
+        Item [] ab = (Item[]) new Object[s.length];
+        for (int k = 0; k < size; k++) {
+            ab[k] = s[k+1];
+        }
+        s = ab;
+    }
     // Adds an item to the front of the Deque
     @Override
     public void addFirst(Item item) {
         if (item == null) {
             throw new NullPointerException();
         }
+        if (isEmpty()){
+            s[0] = item;
+        }
         if (size == s.length) {
             resize(2*s.length);
         }
-        s[nfirst] = item;
-        nfirst--;
+        arraymoveforward();
+        s[0] = item;
         size++;
+        
     }
     
     // Adds an item to the back of Deque
@@ -46,8 +65,7 @@ public class ArrayDeque<Item> implements Deque<Item>{
         if (size == s.length) {
             resize(2*s.length);
         }
-        s[nlast] = item;
-        nlast++;
+        s[size] = item;
         size++;
     }
     
@@ -80,8 +98,8 @@ public class ArrayDeque<Item> implements Deque<Item>{
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        Item r = s[nfirst+1];
-        s[nfirst+1] = null;
+        Item r = s[0];
+        arraymovebackward();
         size--;
         if (size > 0 && size == s.length/4) {
             resize(s.length/2);
@@ -99,8 +117,8 @@ public class ArrayDeque<Item> implements Deque<Item>{
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        Item r = s[nlast-1];
-        s[nlast-1] = null;
+        Item r = s[size-1];
+        //s[size] = null;
         size--;
         if (size > 0 && size == s.length/4) {
             resize(s.length/2);
