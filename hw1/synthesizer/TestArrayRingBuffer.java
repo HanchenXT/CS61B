@@ -1,5 +1,8 @@
 package synthesizer;
 import org.junit.Test;
+
+import edu.princeton.cs.introcs.StdOut;
+
 import static org.junit.Assert.*;
 
 

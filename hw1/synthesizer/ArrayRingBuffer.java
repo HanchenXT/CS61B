@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 //TODO: Make sure to make this class and all of its methods public
 //TODO: Make sure to make this class extend AbstractBoundedQueue<t>
-public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
+public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Iterable <T>{
     /* Index for the next dequeue or peek. */
     private int first;            // index for the next dequeue or peek
     /* Index for the next enqueue. */
@@ -46,6 +46,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
+        if (fillCount == capacity) {
+            throw new RuntimeException("Ring buffer overflow");
+        }
         if (isEmpty()) {
             first = capacity/2 - 1;
             last = capacity/2 - 1;
@@ -72,8 +75,12 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         }
         T r[] = (T[]) new Object[1]; 
         System.arraycopy(rb, first, r, 0, 1);
+        if (first == capacity - 1) {
+            first = 0;
+        } else {
+            first ++;
+        }
         fillCount --;
-        first ++;
         return r[0];
     }
     
@@ -90,9 +97,34 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         }
         return rb[first];
     }
-
+    
+    // get method is just for test purpose
     public T get(int index) {
         return rb[index];
     }
+    
     // TODO: When you get to part 5, implement the needed code to support iteration.
+    public Iterator<T> iterator() {
+        return new helper();
+    }
+    
+    // help return the Iterator 
+    private class helper implements Iterator<T> {
+        private int pos;
+        
+        private helper() {
+            pos = 0;
+        }
+        
+        public boolean hasNext() {
+            return (pos < fillCount);
+        }
+        
+        public T next() {
+            T currentelement = rb[pos];
+            pos++;
+            return currentelement;
+        }
+    }
+    
 }
