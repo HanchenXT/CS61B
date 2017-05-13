@@ -3,6 +3,7 @@ import java.math.*;
 /**
  *  Tests Planet's update() method
  */
+
 public class TestUpdate {
 
     /**
