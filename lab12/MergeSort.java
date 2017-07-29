@@ -63,4 +63,12 @@ public class MergeSort {
         // Your code here!
         return items;
     }
+
+    public static void main(String[] args) {
+        Queue<String> students = new Queue<String>();
+        students.enqueue("Alice");
+        students.enqueue("Vanessa");
+        students.enqueue("Ethan");
+        System.out.println(students);
+    }
 }
